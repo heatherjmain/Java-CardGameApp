@@ -15,7 +15,7 @@ public class CardTest {
 
     @Before
     public void before() {
-        card = new Card(Suit.HEARTS, Value.ACE);
+        card = new Card(Suit.HEARTS, Value.THREE);
     }
 
     @Test
@@ -25,7 +25,12 @@ public class CardTest {
 
     @Test
     public void canGetValue() {
-        assertEquals( Value.ACE, card.getValue() );
+        assertEquals( Value.THREE, card.getValue() );
+    }
+
+    @Test
+    public void canGetCardValueForGame() {
+        assertEquals(2, card.cardValueForGame());
     }
 
 }

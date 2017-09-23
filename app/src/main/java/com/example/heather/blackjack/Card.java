@@ -5,8 +5,8 @@ package com.example.heather.blackjack;
  */
 
 public class Card {
-    Suit suit;
-    Value value;
+    private Suit suit;
+    private Value value;
 
     public  Card(Suit suit, Value value) {
         this.suit = suit;
@@ -19,5 +19,10 @@ public class Card {
 
     public Value getValue() {
         return value;
+    }
+
+    public int cardValueForGame() {
+        return value.ordinal();
+
     }
 }

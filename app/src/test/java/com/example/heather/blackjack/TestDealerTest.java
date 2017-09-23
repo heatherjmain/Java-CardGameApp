@@ -24,7 +24,24 @@ public class TestDealerTest {
 
     @Test
     public void canCReateDeckOFCards() {
+
+//        act
         testDealer.createDeck();
+
+//        assert
         assertEquals( 52, testDealer.getDeckOfCards().size() );
+    }
+
+    @Test
+    public void canRemoveCard() {
+
+//        act
+        testDealer.createDeck();
+        testDealer.dealCard(1);
+
+//        assert
+        assertEquals( 51, testDealer.getDeckOfCards().size() );
+
+
     }
 }

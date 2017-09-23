@@ -1,6 +1,8 @@
 package com.example.heather.blackjack;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 /**
  * Created by heather on 22/09/2017.
@@ -8,18 +10,21 @@ import java.util.ArrayList;
 
 public class TestDealer implements Dealer {
 
-    ArrayList<Card> deckOfCards;
+    private ArrayList<Card> deckOfCards;
 
+//    constructor
     public TestDealer() {
         this.deckOfCards = new ArrayList<>();
     }
 
 
-
+//      getters
     public ArrayList<Card> getDeckOfCards() {
         return deckOfCards;
     }
 
+
+//    methods
     public void createDeck() {
         for (Suit suit : Suit.values()) {
             for (Value value : Value.values()) {
@@ -27,9 +32,14 @@ public class TestDealer implements Dealer {
             }
         }
     }
-    
-    public Card deal() {
-        return null;
+
+    public void shuffleDeck() {
+        Collections.shuffle(deckOfCards);
+    }
+
+
+    public Card dealCard(int index) {
+        return deckOfCards.remove(index);
     }
 
 
