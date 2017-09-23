@@ -3,6 +3,8 @@ package com.example.heather.blackjack;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -18,9 +20,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
-    public void onBlackJackButtonClicked() {
+
+    public void onBlackJackButtonClicked(View button) {
+
+        Log.d( "BlackJack", "Click" );
+
         Intent intent = new Intent(this, PlayBlackJackActivity.class);
-//        intent.putExtra()
         startActivity(intent);
     }
 
