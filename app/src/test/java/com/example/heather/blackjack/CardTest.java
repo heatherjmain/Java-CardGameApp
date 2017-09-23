@@ -30,7 +30,7 @@ public class CardTest {
 
     @Test
     public void canGetCardValueForGame() {
-        assertEquals(2, card.cardValueForGame());
+        assertEquals(3, card.cardValueForGame());
     }
 
 }

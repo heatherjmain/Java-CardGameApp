@@ -26,16 +26,16 @@ public class BlackJackGame extends Game {
 
     public Boolean hasBlackJack(Playable player) {
         Boolean hasAce = false;
-        Boolean hasNumberGreaterThan10 = false;
+        Boolean hasNumberGreaterThan9 = false;
         for (Card card: player.getHand()) {
             if (card.getValue().equals(Value.ACE)  ) {
                 hasAce = true;
             }
-            if (card.cardValueForGame() >= 9) {
-                hasNumberGreaterThan10 = true;
+            if (card.cardValueForGame() >= 10) {
+                hasNumberGreaterThan9 = true;
             }
         }
-        if (hasAce.equals(true) && hasNumberGreaterThan10.equals(true)) {
+        if (hasAce.equals(true) && hasNumberGreaterThan9.equals(true)) {
             return true;
         } else {
             return false;

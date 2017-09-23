@@ -22,7 +22,7 @@ public class Card {
     }
 
     public int cardValueForGame() {
-        return value.ordinal();
+        return value.ordinal() + 1;
 
     }
 }
