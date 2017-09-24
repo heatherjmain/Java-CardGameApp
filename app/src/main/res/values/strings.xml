@@ -4,4 +4,7 @@
     <string name="blackjack_button">BlackJack</string>
     <string name="player1_name">Player 1</string>
     <string name="player2_name">Player 2</string>
+    <string name="enter_player1_name">Enter Player 1 Name</string>
+    <string name="enter_player2_name">Enter Player 2 Name</string>
+    <string name="deal_cards">Deal Cards</string>
 </resources>
