@@ -1,5 +1,14 @@
 package com.example.heather.blackjack;
 
+import com.example.heather.blackjack.Cards.Card;
+import com.example.heather.blackjack.Cards.Suit;
+import com.example.heather.blackjack.Cards.Value;
+import com.example.heather.blackjack.Dealers.Dealer;
+import com.example.heather.blackjack.Dealers.TestDealer;
+import com.example.heather.blackjack.Games.BlackJackGame;
+import com.example.heather.blackjack.Players.BlackJackPlayer;
+import com.example.heather.blackjack.Players.Playable;
+
 import org.junit.Before;
 import org.junit.Test;
 

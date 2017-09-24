@@ -1,4 +1,8 @@
-package com.example.heather.blackjack;
+package com.example.heather.blackjack.Dealers;
+
+import com.example.heather.blackjack.Cards.Card;
+import com.example.heather.blackjack.Cards.Suit;
+import com.example.heather.blackjack.Cards.Value;
 
 import java.util.ArrayList;
 import java.util.Collections;

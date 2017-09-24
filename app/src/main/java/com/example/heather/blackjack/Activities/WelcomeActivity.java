@@ -1,11 +1,13 @@
-package com.example.heather.blackjack;
+package com.example.heather.blackjack.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.heather.blackjack.Activities.PlayerNamesBlackJackActivity;
+import com.example.heather.blackjack.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

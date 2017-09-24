@@ -1,4 +1,4 @@
-package com.example.heather.blackjack;
+package com.example.heather.blackjack.Cards;
 
 /**
  * Created by heather on 22/09/2017.

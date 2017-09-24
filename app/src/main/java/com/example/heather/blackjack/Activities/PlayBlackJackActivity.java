@@ -1,9 +1,11 @@
-package com.example.heather.blackjack;
+package com.example.heather.blackjack.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.heather.blackjack.R;
 
 public class PlayBlackJackActivity extends AppCompatActivity {
 

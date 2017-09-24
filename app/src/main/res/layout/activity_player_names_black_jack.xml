@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.heather.blackjack.PlayerNamesBlackJackActivity">
+    tools:context="com.example.heather.blackjack.Activities.PlayerNamesBlackJackActivity">
 
     <Button
         android:id="@+id/deal_cards_button"
