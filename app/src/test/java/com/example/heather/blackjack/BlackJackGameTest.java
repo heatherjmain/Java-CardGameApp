@@ -98,7 +98,7 @@ public class BlackJackGameTest {
         String winner = blackJackGame.findWinner();
 
 //        assert
-        assertEquals( "Sue", winner );
+        assertEquals( "Sue wins!!!", winner );
     }
 
     @Test
@@ -141,7 +141,7 @@ public class BlackJackGameTest {
         player2.receiveCard(card3);
         player2.receiveCard(card4);
 
-        assertEquals(player2, blackJackGame.findWinner());
+        assertEquals("Sue has BlackJack and wins!!!", blackJackGame.findWinner());
     }
 
     @Test
@@ -158,6 +158,6 @@ public class BlackJackGameTest {
         player2.receiveCard(card3);
         player2.receiveCard(card4);
 
-        assertEquals(player2, blackJackGame.findWinner());
+        assertEquals("Sue wins!!!", blackJackGame.findWinner());
     }
 }

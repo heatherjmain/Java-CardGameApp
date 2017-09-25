@@ -29,9 +29,53 @@ public class Card {
         return value.ordinal() + 1;
     }
 
-    public String getShortName() {
-        return getValue().toString() + " OF " + getSuit().toString();
+    public String getSuitIcons(Suit suit) {
+        switch (suit) {
+            case SPADES:
+                char spades = 0x2660;
+                return String.valueOf(spades);
+            case CLUBS:
+                char clubs = 0x2663;
+                return String.valueOf(clubs);
+            case DIAMONDS:
+                char diamonds = 0x2666;
+                return String.valueOf(diamonds);
+            case HEARTS:
+                char hearts = 0x2665;
+                return String.valueOf(hearts);
+            default:
+                return " ";
+        }
     }
+
+
+
+
+//    public String getCardIcons(Suit suit, Value value) {
+//        switch (suit) {
+//            case SPADES:
+//                switch (value) {
+//                    case ACE:
+//                        char spades = 0xD83C/0xDCA1;
+//                        return String.valueOf(spades);
+//                    default:
+//                        return " ";
+//
+//                }
+//            default:
+//                return " ";
+//        }
+//
+//
+//    }
+
+    public String getShortName() {
+//        char spades = 0xD83C/0xDCA1;
+//        return String.valueOf(spades);
+        return getValue().toString() + " " + String.valueOf(getSuitIcons(this.suit));
+    }
+
+
 
 
 }

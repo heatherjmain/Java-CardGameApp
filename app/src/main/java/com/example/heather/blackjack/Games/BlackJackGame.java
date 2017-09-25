@@ -67,8 +67,6 @@ public class BlackJackGame extends Game {
                     currentWinner = player;
                 }
             }
-
-
         }
         BlackJackPlayer winner = (BlackJackPlayer) currentWinner;
         return winner.getName() + " wins!!!";
