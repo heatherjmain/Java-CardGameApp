@@ -27,6 +27,11 @@ public class Card {
             return 10;
         }
         return value.ordinal() + 1;
-
     }
+
+    public String getShortName() {
+        return getValue().toString() + " OF " + getSuit().toString();
+    }
+
+
 }

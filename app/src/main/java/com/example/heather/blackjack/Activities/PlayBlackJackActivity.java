@@ -5,6 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.heather.blackjack.Dealers.Dealer;
+import com.example.heather.blackjack.Dealers.TestDealer;
+import com.example.heather.blackjack.Games.BlackJackGame;
+import com.example.heather.blackjack.Games.Game;
+import com.example.heather.blackjack.Players.BlackJackPlayer;
+import com.example.heather.blackjack.Players.Playable;
 import com.example.heather.blackjack.R;
 
 public class PlayBlackJackActivity extends AppCompatActivity {
@@ -15,6 +21,12 @@ public class PlayBlackJackActivity extends AppCompatActivity {
     TextView player1Card2;
     TextView player2Card1;
     TextView player2Card2;
+
+    Dealer blackJackDealer;
+    BlackJackGame blackJackGame;
+    Playable player1;
+    Playable player2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +40,48 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player2Card1 = (TextView) findViewById(R.id.player2_card1);
         player2Card2 = (TextView) findViewById(R.id.player2_card2);
 
+        blackJackDealer = new TestDealer();
+        blackJackGame = new BlackJackGame(blackJackDealer);
+        player1 = new BlackJackPlayer(null);
+        player2 = new BlackJackPlayer(null);
 
+
+
+
+//sets players names
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
         String player1Name = extras.getString("player1Name");
-        String firstName = player1Name;
-
+        String setPlayer1Name = player1Name;
 
         String player2Name = extras.getString("player2Name");
-        String secondName = player2Name;
+        String setPlayer2Name = player2Name;
+
+        player1NameText.setText(setPlayer1Name);
+        player2NameText.setText(setPlayer2Name);
 
 
-        player1NameText.setText(firstName);
-        player2NameText.setText(secondName);
+
+
+        blackJackDealer.createDeck();
+        blackJackDealer.shuffleDeck();
+
+        blackJackGame.addPlayer(player1);
+        blackJackGame.addPlayer(player2);
+
+        blackJackGame.dealHands();
+        player1Card1.setText("Card 1: " + player1.getHand().get(0).getShortName());
+        player1Card2.setText("Card 2: " + player1.getHand().get(1).getShortName());
+        player2Card1.setText("Card 1: " + player2.getHand().get(0).getShortName());
+        player2Card2.setText("Card 2: " + player2.getHand().get(1).getShortName());
+
+
+        player1.getScore();
+        player2.getScore();
+
+        blackJackGame.findWinner();
+
 
 
     }

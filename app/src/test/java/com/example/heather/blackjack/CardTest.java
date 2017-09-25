@@ -37,5 +37,10 @@ public class CardTest {
         assertEquals(3, card.cardValueForGame());
     }
 
+
+    @Test
+    public void canGetShortName() {
+        assertEquals("THREE OF HEARTS", card.getShortName());
+    }
 }
 

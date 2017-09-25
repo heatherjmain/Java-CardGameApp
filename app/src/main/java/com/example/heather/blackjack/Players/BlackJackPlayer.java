@@ -13,7 +13,7 @@ public class BlackJackPlayer implements Playable {
     private ArrayList<Card> hand;
     
     public BlackJackPlayer(String name) {
-        this.name = name;
+        this.name = null;
         this.hand = new ArrayList<>();
     }
 
@@ -36,10 +36,6 @@ public class BlackJackPlayer implements Playable {
         int counter = 0;
 
         for ( Card card : hand ) {
-//            if ( card.cardValueForGame() >= 11 ) {
-//                setCardValueForGame() = 10;
-//            }
-
             counter += card.cardValueForGame();
         }
         return counter;
