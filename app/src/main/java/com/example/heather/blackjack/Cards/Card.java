@@ -22,6 +22,10 @@ public class Card {
     }
 
     public int cardValueForGame() {
+
+        if (value.ordinal() + 1 > 10) {
+            return 10;
+        }
         return value.ordinal() + 1;
 
     }

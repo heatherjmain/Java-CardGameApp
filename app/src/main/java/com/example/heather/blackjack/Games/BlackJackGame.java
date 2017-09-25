@@ -34,7 +34,7 @@ public class BlackJackGame extends Game {
             if (card.getValue().equals(Value.ACE)  ) {
                 hasAce = true;
             }
-            if (card.cardValueForGame() >= 10) {
+            if (card.cardValueForGame() > 9) {
                 hasNumberGreaterThan9 = true;
             }
         }

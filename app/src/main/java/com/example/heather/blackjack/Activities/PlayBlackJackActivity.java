@@ -35,8 +35,10 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         String player1Name = extras.getString("player1Name");
         String firstName = player1Name;
 
+
         String player2Name = extras.getString("player2Name");
         String secondName = player2Name;
+
 
         player1NameText.setText(firstName);
         player2NameText.setText(secondName);

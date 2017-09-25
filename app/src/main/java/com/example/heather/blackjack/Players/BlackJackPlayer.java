@@ -36,6 +36,10 @@ public class BlackJackPlayer implements Playable {
         int counter = 0;
 
         for ( Card card : hand ) {
+//            if ( card.cardValueForGame() >= 11 ) {
+//                setCardValueForGame() = 10;
+//            }
+
             counter += card.cardValueForGame();
         }
         return counter;
