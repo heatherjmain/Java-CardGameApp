@@ -95,10 +95,10 @@ public class BlackJackGameTest {
         blackJackGame.dealHands();
 
 //        act
-        Playable winner = blackJackGame.findWinner();
+        String winner = blackJackGame.findWinner();
 
 //        assert
-        assertEquals( player2, winner );
+        assertEquals( "Sue", winner );
     }
 
     @Test

@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.example.heather.blackjack.Dealers.Dealer;
 import com.example.heather.blackjack.Dealers.TestDealer;
 import com.example.heather.blackjack.Games.BlackJackGame;
-import com.example.heather.blackjack.Games.Game;
 import com.example.heather.blackjack.Players.BlackJackPlayer;
 import com.example.heather.blackjack.Players.Playable;
 import com.example.heather.blackjack.R;
@@ -21,6 +20,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
     TextView player1Card2;
     TextView player2Card1;
     TextView player2Card2;
+    TextView declareWinner;
 
     Dealer blackJackDealer;
     BlackJackGame blackJackGame;
@@ -39,11 +39,12 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player1Card2 = (TextView) findViewById(R.id.player1_card2);
         player2Card1 = (TextView) findViewById(R.id.player2_card1);
         player2Card2 = (TextView) findViewById(R.id.player2_card2);
+        declareWinner = (TextView) findViewById(R.id.decalre_winner);
 
         blackJackDealer = new TestDealer();
         blackJackGame = new BlackJackGame(blackJackDealer);
-        player1 = new BlackJackPlayer(null);
-        player2 = new BlackJackPlayer(null);
+//        player1 = new BlackJackPlayer(null);
+//        player2 = new BlackJackPlayer(null);
 
 
 
@@ -61,7 +62,8 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player1NameText.setText(setPlayer1Name);
         player2NameText.setText(setPlayer2Name);
 
-
+        player1 = new BlackJackPlayer(setPlayer1Name);
+        player2 = new BlackJackPlayer(setPlayer2Name);
 
 
         blackJackDealer.createDeck();
@@ -80,7 +82,15 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player1.getScore();
         player2.getScore();
 
-        blackJackGame.findWinner();
+
+        if ( blackJackGame.hasBlackJack(player1) ) {
+            declareWinner.setText(blackJackGame.findWinner());
+        } else if ( blackJackGame.hasBlackJack(player2) ) {
+            declareWinner.setText(blackJackGame.findWinner());
+        } else {
+            declareWinner.setText(blackJackGame.findWinner());
+        }
+
 
 
 

@@ -3,6 +3,7 @@ package com.example.heather.blackjack.Games;
 
 import com.example.heather.blackjack.Cards.Card;
 import com.example.heather.blackjack.Dealers.Dealer;
+import com.example.heather.blackjack.Players.BlackJackPlayer;
 import com.example.heather.blackjack.Players.Playable;
 import com.example.heather.blackjack.Cards.Value;
 
@@ -30,8 +31,8 @@ public class BlackJackGame extends Game {
     public Boolean hasBlackJack(Playable player) {
         Boolean hasAce = false;
         Boolean hasNumberGreaterThan9 = false;
-        for (Card card: player.getHand()) {
-            if (card.getValue().equals(Value.ACE)  ) {
+        for (Card card : player.getHand()) {
+            if (card.getValue().equals(Value.ACE)) {
                 hasAce = true;
             }
             if (card.cardValueForGame() > 9) {
@@ -45,27 +46,34 @@ public class BlackJackGame extends Game {
         }
     }
 
-    public Playable findWinner() {
+    public String findWinner() {
         Playable currentWinner = players.get(0);
 
 
         for (Playable player : players) {
 
-            if (hasBlackJack(player)) {
-                return player;
-            } else {
 
+            if (hasBlackJack(player)) {
+                BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
+                return hasBlackjack.getName() + " has BlackJack and wins!!!";
+            } else {
                 int winningScore = currentWinner.getScore();
                 int challengerScore = player.getScore();
 
-                if (challengerScore > winningScore) {
+                if ((challengerScore == winningScore) && (player != currentWinner)) {
+                    return "It's a draw - Try again";
+
+                } else if (challengerScore > winningScore) {
                     currentWinner = player;
                 }
             }
+
+
         }
-        return currentWinner;
+        BlackJackPlayer winner = (BlackJackPlayer) currentWinner;
+        return winner.getName() + " wins!!!";
+
 
     }
-
 
 }
