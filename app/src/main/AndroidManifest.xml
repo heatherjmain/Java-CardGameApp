@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.PlayBlackJackActivity"></activity>
-        <activity android:name=".Activities.PlayerNamesBlackJackActivity"></activity>
+        <activity android:name=".Activities.PlayBlackJackActivity" />
+        <activity android:name=".Activities.PlayerNamesBlackJackActivity" />
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>

@@ -40,7 +40,7 @@ public class CardTest {
 
     @Test
     public void canGetShortName() {
-        assertEquals("THREE OF HEARTS", card.getShortName());
+        assertEquals("THREE ♥", card.getShortName());
     }
 }
 

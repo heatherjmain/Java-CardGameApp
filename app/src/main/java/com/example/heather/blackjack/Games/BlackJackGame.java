@@ -17,14 +17,17 @@ public class BlackJackGame extends Game {
         super(dealer);
     }
 
-    public void dealHands() {
+    public void dealCard(Playable player) {
+        Card card = dealer.dealCard(0);
+        player.receiveCard(card);
+    }
+
+    public void dealRound() {
         for (Playable player : players) {
-            Card card = dealer.dealCard(0);
-            player.receiveCard(card);
+            dealCard(player);
         }
         for (Playable player : players) {
-            Card card = dealer.dealCard(0);
-            player.receiveCard(card);
+            dealCard(player);
         }
     }
 
@@ -46,28 +49,40 @@ public class BlackJackGame extends Game {
         }
     }
 
+    public String declareWinnerWithBlackJack(Playable player) {
+        if (hasBlackJack(player)) {
+            BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
+            return hasBlackjack.getName() + " has BlackJack and wins!!!";
+        }
+        return " ";
+    }
+
     public String findWinner() {
-        Playable currentWinner = players.get(0);
+//        Playable currentWinner = players.get(0);
+        Playable currentWinner = null;
+        int winningScore = 0;
+
 
 
         for (Playable player : players) {
 
 
-            if (hasBlackJack(player)) {
-                BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
-                return hasBlackjack.getName() + " has BlackJack and wins!!!";
-            } else {
-                int winningScore = currentWinner.getScore();
+//            if (hasBlackJack(player)) {
+//                BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
+//                return hasBlackjack.getName() + " has BlackJack and wins!!!";
+//            } else {
+//                int winningScore = currentWinner.getScore();
                 int challengerScore = player.getScore();
 
                 if ((challengerScore == winningScore) && (player != currentWinner)) {
                     return "It's a draw - Try again";
 
-                } else if (challengerScore > winningScore) {
+                } else if (challengerScore > winningScore && challengerScore <= 21) {
                     currentWinner = player;
+                    winningScore = challengerScore;
                 }
             }
-        }
+
         BlackJackPlayer winner = (BlackJackPlayer) currentWinner;
         return winner.getName() + " wins!!!";
 

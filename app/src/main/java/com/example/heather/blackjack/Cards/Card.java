@@ -70,8 +70,9 @@ public class Card {
 //    }
 
     public String getShortName() {
-//        char spades = 0xD83C/0xDCA1;
+//        String spades = "\uD83C\uDCA1";
 //        return String.valueOf(spades);
+//        return spades;
         return getValue().toString() + " " + String.valueOf(getSuitIcons(this.suit));
     }
 

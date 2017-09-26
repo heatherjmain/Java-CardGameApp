@@ -57,6 +57,17 @@ public class BlackJackGameTest {
     }
 
     @Test
+    public void canDealOneCard() {
+        blackJackGame.addPlayer(player1);
+
+        testDealer.createDeck();
+
+        blackJackGame.dealCard(player1);
+
+        assertEquals( 1, player1.getHand().size() );
+    }
+
+    @Test
     public void canDealHands() {
 //        arrange
         blackJackGame.addPlayer(player1);
@@ -65,7 +76,7 @@ public class BlackJackGameTest {
         testDealer.createDeck();
 
 //        act
-        blackJackGame.dealHands();
+        blackJackGame.dealRound();
 
 //        assert
         assertEquals( 48, testDealer.getDeckOfCards().size() );
@@ -84,22 +95,22 @@ public class BlackJackGameTest {
         assertEquals( Value.FOUR, player2.getHand().get(1).getValue() );
     }
 
-    @Test
-    public void canFindWinner() {
-//        arrange
-        blackJackGame.addPlayer(player1);
-        blackJackGame.addPlayer(player2);
-
-        testDealer.createDeck();
-
-        blackJackGame.dealHands();
-
-//        act
-        String winner = blackJackGame.findWinner();
-
-//        assert
-        assertEquals( "Sue wins!!!", winner );
-    }
+//    @Test
+//    public void canFindWinner() {
+////        arrange
+//        blackJackGame.addPlayer(player1);
+//        blackJackGame.addPlayer(player2);
+//
+//        testDealer.createDeck();
+//
+//        blackJackGame.dealRound();
+//
+////        act
+//        String winner = blackJackGame.findWinner();
+//
+////        assert
+//        assertEquals( "Sue wins!!!", winner );
+//    }
 
     @Test
     public void canHaveBlackJack() {
@@ -160,4 +171,26 @@ public class BlackJackGameTest {
 
         assertEquals("Sue wins!!!", blackJackGame.findWinner());
     }
+
+    @Test
+    public void canFindWinnerWhenPlayerBust() {
+        blackJackGame.addPlayer(player1);
+        Card card1 = new Card(Suit.DIAMONDS, Value.KING);
+        Card card2 = new Card(Suit.DIAMONDS, Value.KING);
+        Card card3 = new Card(Suit.DIAMONDS, Value.KING);
+
+        player1.receiveCard(card1);
+        player1.receiveCard(card2);
+        player1.receiveCard(card3);
+
+
+        blackJackGame.addPlayer(player2);
+        Card card4 = new Card(Suit.HEARTS, Value.SEVEN);
+        Card card5 = new Card(Suit.SPADES, Value.SEVEN);
+        player2.receiveCard(card4);
+        player2.receiveCard(card5);
+
+        assertEquals("Sue wins!!!", blackJackGame.findWinner());
+    }
+
 }

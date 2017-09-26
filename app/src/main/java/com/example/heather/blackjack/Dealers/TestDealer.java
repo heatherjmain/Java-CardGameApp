@@ -37,6 +37,15 @@ public class TestDealer implements Dealer {
         }
     }
 
+//    public void createDeck() {
+//        deckOfCards.add(new Card(Suit.SPADES, Value.ACE));
+//        deckOfCards.add(new Card(Suit.SPADES, Value.ACE));
+//        deckOfCards.add(new Card(Suit.SPADES, Value.ACE));
+//        deckOfCards.add(new Card(Suit.SPADES, Value.ACE));
+//        deckOfCards.add(new Card(Suit.SPADES, Value.KING));
+//        deckOfCards.add(new Card(Suit.SPADES, Value.KING));
+
+
     public void shuffleDeck() {
         Collections.shuffle(deckOfCards);
     }
