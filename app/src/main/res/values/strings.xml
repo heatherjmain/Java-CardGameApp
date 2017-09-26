@@ -9,6 +9,6 @@
     <string name="deal_cards">Deal Cards</string>
     <string name="stick_button">stick</string>
     <string name="hit_button">hit</string>
-    <string name="choose_another_game">Coose another game</string>
-    <string name="play_blackjack_again">Play BlackJack again</string>
+    <string name="choose_another_game">Choose another game</string>
+    <string name="play_blackjack_again">Play again</string>
 </resources>

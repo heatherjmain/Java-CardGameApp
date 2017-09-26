@@ -1,6 +1,7 @@
 package com.example.heather.blackjack.Players;
 
 import com.example.heather.blackjack.Cards.Card;
+import com.example.heather.blackjack.Cards.Value;
 
 import java.util.ArrayList;
 
@@ -32,14 +33,34 @@ public class BlackJackPlayer implements Playable {
         hand.add(card);
     }
 
+
+
     public int getScore() {
         int counter = 0;
 
         for ( Card card : hand ) {
+//
+//            if (counter > 21 && (card.getValue() == Value.ACE)) {
+//                counter -= 10;
+//            }
+
             counter += card.cardValueForGame();
         }
         return counter;
     }
+
+
+
+//
+//    public int getScore() {
+//        int score = getAcesLowScore();
+//
+//
+//        if (score < 11 && getHand().contains(Value.ACE)) {
+//            score += 10;
+//        }
+//        return score;
+//    }
 
 
 }

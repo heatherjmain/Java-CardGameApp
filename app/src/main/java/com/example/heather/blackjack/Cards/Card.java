@@ -23,9 +23,12 @@ public class Card {
 
     public int cardValueForGame() {
 
-        if (value.ordinal() + 1 > 10) {
+        if (value.ordinal() + 1 > 10)
             return 10;
-        }
+
+        if (value == Value.ACE)
+            return 11;
+
         return value.ordinal() + 1;
     }
 
@@ -44,30 +47,12 @@ public class Card {
                 char hearts = 0x2665;
                 return String.valueOf(hearts);
             default:
-                return " ";
+                return null;
         }
     }
 
 
 
-
-//    public String getCardIcons(Suit suit, Value value) {
-//        switch (suit) {
-//            case SPADES:
-//                switch (value) {
-//                    case ACE:
-//                        char spades = 0xD83C/0xDCA1;
-//                        return String.valueOf(spades);
-//                    default:
-//                        return " ";
-//
-//                }
-//            default:
-//                return " ";
-//        }
-//
-//
-//    }
 
     public String getShortName() {
 //        String spades = "\uD83C\uDCA1";

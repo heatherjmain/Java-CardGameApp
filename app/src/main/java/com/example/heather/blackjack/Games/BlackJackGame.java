@@ -33,16 +33,16 @@ public class BlackJackGame extends Game {
 
     public Boolean hasBlackJack(Playable player) {
         Boolean hasAce = false;
-        Boolean hasNumberGreaterThan9 = false;
+        Boolean hasTenOrFace = false;
         for (Card card : player.getHand()) {
             if (card.getValue().equals(Value.ACE)) {
                 hasAce = true;
             }
-            if (card.cardValueForGame() > 9) {
-                hasNumberGreaterThan9 = true;
+            if (card.cardValueForGame() == 10) {
+                hasTenOrFace = true;
             }
         }
-        if (hasAce.equals(true) && hasNumberGreaterThan9.equals(true)) {
+        if (hasAce.equals(true) && hasTenOrFace.equals(true)) {
             return true;
         } else {
             return false;
@@ -52,7 +52,7 @@ public class BlackJackGame extends Game {
     public String declareWinnerWithBlackJack(Playable player) {
         if (hasBlackJack(player)) {
             BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
-            return hasBlackjack.getName() + " has BlackJack and wins!!!";
+            return hasBlackjack.getName().toUpperCase() + " HAS BLACKJACK AND WINS!";
         }
         return " ";
     }
@@ -61,8 +61,6 @@ public class BlackJackGame extends Game {
 //        Playable currentWinner = players.get(0);
         Playable currentWinner = null;
         int winningScore = 0;
-
-
 
         for (Playable player : players) {
 
@@ -75,7 +73,7 @@ public class BlackJackGame extends Game {
                 int challengerScore = player.getScore();
 
                 if ((challengerScore == winningScore) && (player != currentWinner)) {
-                    return "It's a draw - Try again";
+                    return "IT'S A DRAW! TRY AGAIN";
 
                 } else if (challengerScore > winningScore && challengerScore <= 21) {
                     currentWinner = player;
@@ -84,8 +82,7 @@ public class BlackJackGame extends Game {
             }
 
         BlackJackPlayer winner = (BlackJackPlayer) currentWinner;
-        return winner.getName() + " wins!!!";
-
+        return winner.getName().toUpperCase() + " WINS!";
 
     }
 

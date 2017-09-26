@@ -36,9 +36,10 @@ public class PlayBlackJackActivity extends AppCompatActivity {
 
     Button player1StickButton;
     Button player1HitButton;
-
     Button player2StickButton;
     Button player2HitButton;
+    Button playAgainButton;
+    Button chooseAnotherGameButton;
 
     Dealer blackJackDealer;
     BlackJackGame blackJackGame;
@@ -74,6 +75,10 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player2HitButton = (Button) findViewById(R.id.player2_hit_button);
         player2HitButton.setEnabled(false);
         player2StickButton.setEnabled(false);
+
+        playAgainButton = (Button) findViewById(R.id.play_again_button);
+        chooseAnotherGameButton = (Button) findViewById(R.id.choose_another_game_button);
+
     }
 
     @Override
@@ -129,6 +134,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
 
 
         player2Card1.setText(player2.getHand().get(0).getShortName());
+        player2Card2.setText("???");
 
 
 
@@ -167,6 +173,9 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card3.setText(player1.getHand().get(2).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player1HitButton.setEnabled(false);
+                    player1StickButton.setEnabled(false);
                 } else
                     informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
 //                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
@@ -175,6 +184,9 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card4.setText(player1.getHand().get(3).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player1HitButton.setEnabled(false);
+                    player1StickButton.setEnabled(false);
                 } else
                     informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
 //                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
@@ -183,6 +195,9 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card5.setText(player1.getHand().get(4).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player1HitButton.setEnabled(false);
+                    player1StickButton.setEnabled(false);
                 } else
                     informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
 //                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
@@ -236,25 +251,31 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player2Card3.setText(player2.getHand().get(2).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + "  BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player2HitButton.setEnabled(false);
+                    player2StickButton.setEnabled(false);
                 } else
                     informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player2.getHand().size() == 4) {
                 player2Card4.setText(player2.getHand().get(3).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player2HitButton.setEnabled(false);
+                    player2StickButton.setEnabled(false);
                 } else
                     informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player2.getHand().size() == 5) {
                 player2Card5.setText(player2.getHand().get(4).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                    informationText.setText("BUST - TRY AGAIN");
+                    player2HitButton.setEnabled(false);
+                    player2StickButton.setEnabled(false);
                 } else
                     informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
             }
         }
         //get the view that they will be addings card
@@ -277,6 +298,17 @@ public class PlayBlackJackActivity extends AppCompatActivity {
             }
         };
         setDelay.postDelayed(startDelay, 2500);
+    }
+
+
+    public void onPlayAgainButtonClicked(View view) {
+        Intent intent = new Intent(this, PlayerNamesBlackJackActivity.class);
+        startActivity(intent);
+    }
+
+    public void onChooseAnotherGameButtonClicked(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
 

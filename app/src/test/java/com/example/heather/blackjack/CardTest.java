@@ -28,6 +28,14 @@ public class CardTest {
     }
 
     @Test
+    public void canGetSuitIcon() {
+        assertEquals("♥", card.getSuitIcons(Suit.HEARTS));
+        assertEquals("♠", card.getSuitIcons(Suit.SPADES));
+        assertEquals("♦", card.getSuitIcons(Suit.DIAMONDS));
+        assertEquals("♣", card.getSuitIcons(Suit.CLUBS));
+    }
+
+    @Test
     public void canGetValue() {
         assertEquals( Value.THREE, card.getValue() );
     }
