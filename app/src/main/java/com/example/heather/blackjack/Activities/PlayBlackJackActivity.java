@@ -13,7 +13,6 @@ import com.example.heather.blackjack.Dealers.Dealer;
 import com.example.heather.blackjack.Dealers.TestDealer;
 import com.example.heather.blackjack.Games.BlackJackGame;
 import com.example.heather.blackjack.Players.BlackJackPlayer;
-import com.example.heather.blackjack.Players.Playable;
 import com.example.heather.blackjack.R;
 
 public class PlayBlackJackActivity extends AppCompatActivity {
@@ -33,7 +32,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
     TextView player2Card4;
     TextView player2Card5;
 
-    TextView declareWinner;
+    TextView informationText;
 
     Button player1StickButton;
     Button player1HitButton;
@@ -66,13 +65,15 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player2Card4 = (TextView) findViewById(R.id.player2_card4);
         player2Card5 = (TextView) findViewById(R.id.player2_card5);
 
-        declareWinner = (TextView) findViewById(R.id.decalre_winner);
+        informationText = (TextView) findViewById(R.id.information_text);
 
         player1StickButton = (Button) findViewById(R.id.player1_stick_button);
         player1HitButton = (Button) findViewById(R.id.player1_hit_button);
 
         player2StickButton = (Button) findViewById(R.id.player2_stick_button);
         player2HitButton = (Button) findViewById(R.id.player2_hit_button);
+        player2HitButton.setEnabled(false);
+        player2StickButton.setEnabled(false);
     }
 
     @Override
@@ -141,14 +142,15 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                     player2Card2.setText(player2.getHand().get(1).getShortName());
                     if (blackJackGame.hasBlackJack(player2) == true) {
                         makeToast(player2.getName().toUpperCase() + " HAS BLACKJACK", Toast.LENGTH_SHORT);
-                        declareWinner.setText(blackJackGame.declareWinnerWithBlackJack(player2));
+                        informationText.setText(blackJackGame.declareWinnerWithBlackJack(player2));
                     } else
-                        declareWinner.setText(blackJackGame.declareWinnerWithBlackJack(player1));
+                        informationText.setText(blackJackGame.declareWinnerWithBlackJack(player1));
                 }
             };
             setDelay.postDelayed(startDelay, 5000);
         } else
-            makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+            informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
+//            makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
     }
 
@@ -164,23 +166,26 @@ public class PlayBlackJackActivity extends AppCompatActivity {
             if (player1.getHand().size() == 3) {
                 player1Card3.setText(player1.getHand().get(2).getShortName());
                 if (player1.getScore() > 21) {
-                    makeToast(player1.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player1.getHand().size() == 4) {
                 player1Card4.setText(player1.getHand().get(3).getShortName());
                 if (player1.getScore() > 21) {
-                    makeToast(player1.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player1.getHand().size() == 5) {
                 player1Card5.setText(player1.getHand().get(4).getShortName());
                 if (player1.getScore() > 21) {
-                    makeToast(player1.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
             }
         }
             //get the view that they will be addings card
@@ -196,18 +201,25 @@ public class PlayBlackJackActivity extends AppCompatActivity {
     public void onPlayer1StickButtonClicked(View view) {
 
         setDelay = new Handler();
-
         makeToast(player1.getName().toUpperCase() + ", YOUR SCORE IS " + player1.getScore() + "!" , Toast.LENGTH_SHORT);
+        //disable hit button
+        player1HitButton.setEnabled(false);
+
 
         startDelay = new Runnable() {
             @Override
             public void run() {
                 player2Card2.setText(player2.getHand().get(1).getShortName());
                 if (blackJackGame.hasBlackJack(player2) == true) {
-                    declareWinner.setText(blackJackGame.declareWinnerWithBlackJack(player2));
+                    informationText.setText(blackJackGame.declareWinnerWithBlackJack(player2));
                 }
                 else
-                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    player2HitButton.setEnabled(true);
+                    player2StickButton.setEnabled(true);
+
+
             }
         };
         setDelay.postDelayed(startDelay, 2500);
@@ -223,23 +235,26 @@ public class PlayBlackJackActivity extends AppCompatActivity {
             if (player2.getHand().size() == 3) {
                 player2Card3.setText(player2.getHand().get(2).getShortName());
                 if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player2.getName().toUpperCase() + "  BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player2.getHand().size() == 4) {
                 player2Card4.setText(player2.getHand().get(3).getShortName());
                 if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player2.getHand().size() == 5) {
                 player2Card5.setText(player2.getHand().get(4).getShortName());
                 if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + "BUST", Toast.LENGTH_SHORT);
+                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
                 } else
-                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
+                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
             }
         }
         //get the view that they will be addings card
@@ -252,13 +267,13 @@ public class PlayBlackJackActivity extends AppCompatActivity {
     public void onPlayer2StickButtonClicked(View view) {
 
         setDelay = new Handler();
-
         makeToast(player2.getName().toUpperCase() + ", YOUR SCORE IS " + player2.getScore() + "!", Toast.LENGTH_SHORT);
+        player2HitButton.setEnabled(false);
 
         startDelay = new Runnable() {
             @Override
             public void run() {
-                declareWinner.setText(blackJackGame.findWinner());
+                informationText.setText(blackJackGame.findWinner());
             }
         };
         setDelay.postDelayed(startDelay, 2500);
