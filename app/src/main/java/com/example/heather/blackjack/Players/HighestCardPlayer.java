@@ -37,8 +37,14 @@ public class HighestCardPlayer implements Playable {
         int counter = 0;
 
         for ( Card card : hand ) {
-            if (card.getValue() == Value.ACE) {
+            if (card.getValue() == Value.JACK) {
                 counter += 11;
+            } else if (card.getValue() == Value.QUEEN) {
+                counter += 12;
+            } else if (card.getValue() == Value.KING) {
+                counter += 13;
+            } else if (card.getValue() == Value.ACE) {
+                counter += 14;
             } else
             counter += card.cardValueForGame();
         }
