@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,14 +17,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Activities.PlayBlackJackActivity"
             android:parentActivityName=".Activities.PlayerNamesBlackJackActivity" />
+
         <activity
             android:name=".Activities.PlayerNamesBlackJackActivity"
             android:parentActivityName=".Activities.WelcomeActivity" />
-        <activity android:name=".Activities.PlayerNameHighestCardActivity" />
-        <activity android:name=".Activities.PlayHighestCardActivity"></activity>
+
+        <activity
+            android:name=".Activities.PlayerNameHighestCardActivity"
+            android:parentActivityName=".Activities.WelcomeActivity" />
+
+        <activity
+            android:name=".Activities.PlayHighestCardActivity"
+            android:parentActivityName=".Activities.PlayerNameHighestCardActivity"/>
+
+
+
     </application>
 
 </manifest>
+
+
+
+<!--make aces 1/11-->
+<!--make names persist when going backwards-->
+<!--make dealer the 2nd player in blackjack and automate all actions with delay-->
+<!--add icon and put on phone-->

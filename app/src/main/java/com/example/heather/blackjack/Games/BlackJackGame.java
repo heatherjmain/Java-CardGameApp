@@ -58,18 +58,10 @@ public class BlackJackGame extends Game {
     }
 
     public String findWinner() {
-//        Playable currentWinner = players.get(0);
         Playable currentWinner = null;
         int winningScore = 0;
 
         for (Playable player : players) {
-
-
-//            if (hasBlackJack(player)) {
-//                BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
-//                return hasBlackjack.getName() + " has BlackJack and wins!!!";
-//            } else {
-//                int winningScore = currentWinner.getScore();
                 int challengerScore = player.getScore();
 
                 if ((challengerScore == winningScore) && (player != currentWinner)) {

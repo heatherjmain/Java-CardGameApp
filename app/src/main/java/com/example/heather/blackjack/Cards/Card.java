@@ -51,13 +51,7 @@ public class Card {
         }
     }
 
-
-
-
     public String getShortName() {
-//        String spades = "\uD83C\uDCA1";
-//        return String.valueOf(spades);
-//        return spades;
         return getValue().toString() + " " + String.valueOf(getSuitIcons(this.suit));
     }
 

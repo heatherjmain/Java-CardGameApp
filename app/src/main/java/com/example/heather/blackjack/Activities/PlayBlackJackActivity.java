@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,8 +37,6 @@ public class PlayBlackJackActivity extends AppCompatActivity {
 
     Button player1StickButton;
     Button player1HitButton;
-    Button player2StickButton;
-    Button player2HitButton;
     Button playAgainButton;
     Button chooseAnotherGameButton;
 
@@ -71,11 +70,6 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         player1StickButton = (Button) findViewById(R.id.player1_stick_button);
         player1HitButton = (Button) findViewById(R.id.player1_hit_button);
 
-        player2StickButton = (Button) findViewById(R.id.player2_stick_button);
-        player2HitButton = (Button) findViewById(R.id.player2_hit_button);
-        player2HitButton.setEnabled(false);
-        player2StickButton.setEnabled(false);
-
         playAgainButton = (Button) findViewById(R.id.play_again_button);
         chooseAnotherGameButton = (Button) findViewById(R.id.choose_another_game_button);
 
@@ -105,7 +99,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
         String player1Name = extras.getString("player1Name");
         String setPlayer1Name = player1Name;
 
-        String player2Name = extras.getString("player2Name");
+        String player2Name = "DEALER";
         String setPlayer2Name = player2Name;
 
         player1NameText.setText(setPlayer1Name);
@@ -156,149 +150,184 @@ public class PlayBlackJackActivity extends AppCompatActivity {
             setDelay.postDelayed(startDelay, 5000);
         } else
             informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
-//            makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
-
     }
-
-
 
 
     public void onPlayer1HitButtonClicked(View view) {
         if (player1.getScore() < 21) {
-            //deal card to the player
             blackJackGame.dealCard(player1);
 
-            //find out how many cards they currently have.
             if (player1.getHand().size() == 3) {
                 player1Card3.setText(player1.getHand().get(2).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
+                    informationText.setText("BUST, " + player2.getName().toUpperCase() + " WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
                     informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player1.getHand().size() == 4) {
                 player1Card4.setText(player1.getHand().get(3).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
+                    informationText.setText("BUST, " + player2.getName().toUpperCase() + " WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
                     informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
 
             } else if (player1.getHand().size() == 5) {
                 player1Card5.setText(player1.getHand().get(4).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
+                    informationText.setText("BUST, " + player2.getName().toUpperCase() + " WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
                     informationText.setText("WOW - 5 CARD TRICK - PLEASE STICK");
-//                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
             }
         }
-            //get the view that they will be addings card
-            //add that text to the view
     }
-
 
     public void makeToast(String message, int length) {
         Toast.makeText(this, message, length).show();
     }
 
-
     public void onPlayer1StickButtonClicked(View view) {
-
         setDelay = new Handler();
+
         makeToast(player1.getName().toUpperCase() + ", YOUR SCORE IS " + player1.getScore() + "!" , Toast.LENGTH_SHORT);
-        //disable hit button
         player1HitButton.setEnabled(false);
+
+        informationText.setText(player1.getName().toUpperCase() + " STICKS AT " + player1.getScore() );
 
 
         startDelay = new Runnable() {
             @Override
             public void run() {
                 player2Card2.setText(player2.getHand().get(1).getShortName());
-                if (blackJackGame.hasBlackJack(player2) == true) {
+                if (blackJackGame.hasBlackJack(player2)) {
                     informationText.setText(blackJackGame.declareWinnerWithBlackJack(player2));
                 }
-                else
-                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-//                    makeToast(player2.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
-                    player2HitButton.setEnabled(true);
-                    player2StickButton.setEnabled(true);
-
-
             }
         };
+
         setDelay.postDelayed(startDelay, 2500);
-    }
-
-
-
-
-    public void onPlayer2HitButtonClicked(View view) {
-        if (player2.getScore() < 21) {
-            blackJackGame.dealCard(player2);
-
-            if (player2.getHand().size() == 3) {
-                player2Card3.setText(player2.getHand().get(2).getShortName());
-                if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + "  BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
-                    player2HitButton.setEnabled(false);
-                    player2StickButton.setEnabled(false);
-                } else
-                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-
-            } else if (player2.getHand().size() == 4) {
-                player2Card4.setText(player2.getHand().get(3).getShortName());
-                if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
-                    player2HitButton.setEnabled(false);
-                    player2StickButton.setEnabled(false);
-                } else
-                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
-
-            } else if (player2.getHand().size() == 5) {
-                player2Card5.setText(player2.getHand().get(4).getShortName());
-                if (player2.getScore() > 21) {
-                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
-                    player2HitButton.setEnabled(false);
-                    player2StickButton.setEnabled(false);
-                } else
-                    informationText.setText("WOW - 5 CARD TRICK - PLEASE STICK");
-            }
-        }
-        //get the view that they will be addings card
-        //add that text to the view
-    }
-
-
-
-
-    public void onPlayer2StickButtonClicked(View view) {
-
-        setDelay = new Handler();
-        makeToast(player2.getName().toUpperCase() + ", YOUR SCORE IS " + player2.getScore() + "!", Toast.LENGTH_SHORT);
-        player2HitButton.setEnabled(false);
 
         startDelay = new Runnable() {
             @Override
             public void run() {
-                informationText.setText(blackJackGame.findWinner());
+                while (player2.getScore() < 17) {
+                    blackJackGame.dealCard(player2);
+
+                        if (player2.getHand().size() == 3) {
+                            player2Card3.setText(player2.getHand().get(2).getShortName());
+                            if (player2.getScore() > 21) {
+                                makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                                informationText.setText("DEALER BUST, " + player1.getName().toUpperCase() + " WINS");
+                            }
+
+                        } else if (player2.getHand().size() == 4) {
+                            player2Card4.setText(player2.getHand().get(3).getShortName());
+                            if (player2.getScore() > 21) {
+                                makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                                informationText.setText("DEALER BUST, " + player1.getName().toUpperCase() + " WINS");
+                            }
+
+                        } else if (player2.getHand().size() == 5) {
+                            player2Card5.setText(player2.getHand().get(4).getShortName());
+                            if (player2.getScore() > 21) {
+                                makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+                                informationText.setText("DEALER BUST, " + player1.getName().toUpperCase() + " WINS");
+                            }
+
+                        } else
+                            informationText.setText("WOW - 5 CARD TRICK - DEALER STICKS");
+
+                }
+
+                if (player2.getScore() <= 21) {
+                    Log.d("dealer wins", "does this log ever run???");
+                    makeToast("DEALER'S SCORE IS " + player2.getScore() + "!", Toast.LENGTH_SHORT);
+                    informationText.setText(blackJackGame.findWinner());
+                }
             }
         };
-        setDelay.postDelayed(startDelay, 2500);
+
+        setDelay.postDelayed(startDelay, 4000);
+
+
+
+
+
+//        startDelay = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                informationText.setText(blackJackGame.findWinner());
+//            }
+//        };
+//        setDelay.postDelayed(startDelay, 8500);
     }
+
+
+
+
+//    public void onPlayer2HitButtonClicked(View view) {
+//        if (player2.getScore() < 21) {
+//            blackJackGame.dealCard(player2);
+//
+//            if (player2.getHand().size() == 3) {
+//                player2Card3.setText(player2.getHand().get(2).getShortName());
+//                if (player2.getScore() > 21) {
+//                    makeToast(player2.getName().toUpperCase() + "  BUST", Toast.LENGTH_SHORT);
+//                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
+//                    player2HitButton.setEnabled(false);
+//                    player2StickButton.setEnabled(false);
+//                } else
+//                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//
+//            } else if (player2.getHand().size() == 4) {
+//                player2Card4.setText(player2.getHand().get(3).getShortName());
+//                if (player2.getScore() > 21) {
+//                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+//                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
+//                    player2HitButton.setEnabled(false);
+//                    player2StickButton.setEnabled(false);
+//                } else
+//                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+//
+//            } else if (player2.getHand().size() == 5) {
+//                player2Card5.setText(player2.getHand().get(4).getShortName());
+//                if (player2.getScore() > 21) {
+//                    makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
+//                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
+//                    player2HitButton.setEnabled(false);
+//                    player2StickButton.setEnabled(false);
+//                } else
+//                    informationText.setText("WOW - 5 CARD TRICK - PLEASE STICK");
+//            }
+//        }
+//        //get the view that they will be addings card
+//        //add that text to the view
+//    }
+
+
+//    public void onPlayer2StickButtonClicked(View view) {
+//
+//        setDelay = new Handler();
+//        makeToast(player2.getName().toUpperCase() + ", YOUR SCORE IS " + player2.getScore() + "!", Toast.LENGTH_SHORT);
+//        player2HitButton.setEnabled(false);
+//
+//        startDelay = new Runnable() {
+//            @Override
+//            public void run() {
+//                informationText.setText(blackJackGame.findWinner());
+//            }
+//        };
+//        setDelay.postDelayed(startDelay, 2500);
+//    }
 
 
     public void onPlayAgainButtonClicked(View view) {

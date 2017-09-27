@@ -11,18 +11,14 @@ import android.widget.TextView;
 
 import com.example.heather.blackjack.Dealers.Dealer;
 import com.example.heather.blackjack.Dealers.TestDealer;
-import com.example.heather.blackjack.Games.BlackJackGame;
 import com.example.heather.blackjack.Games.HighestCardGame;
 import com.example.heather.blackjack.Players.HighestCardPlayer;
-import com.example.heather.blackjack.Players.Playable;
 import com.example.heather.blackjack.R;
 
-import static com.example.heather.blackjack.R.string.dealer;
 
 public class PlayHighestCardActivity extends AppCompatActivity {
 
     Button playerDealCard;
-    Button player2DealCard;
     Button playAgainButton;
     Button chooseAnotherGameButton;
     TextView playerCardText;
@@ -45,7 +41,6 @@ public class PlayHighestCardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_highest_card);
 
         playerDealCard = (Button) findViewById(R.id.player1_deal_card);
-        player2DealCard = (Button) findViewById(R.id.player2_deal_card);
         playAgainButton = (Button) findViewById(R.id.play_again_button);
         chooseAnotherGameButton = (Button) findViewById(R.id.choose_another_game_button);
         playerCardText = (TextView) findViewById(R.id.player1_card);
@@ -84,16 +79,21 @@ public class PlayHighestCardActivity extends AppCompatActivity {
     }
 
     public void onPlayer1DealCardButtonClicked(View view) {
-        highestCardGame.dealCard(player);
-        playerCardText.setText(player.getHand().get(0).getShortName());
-    }
-
-    public void onPlayer2DealCardButtonClicked(View view) {
 
         setDelay = new Handler();
 
-        highestCardGame.dealCard(player2);
-        player2CardText.setText(player2.getHand().get(0).getShortName());
+        highestCardGame.dealCard(player);
+        playerCardText.setText(player.getHand().get(0).getShortName());
+
+        startDelay = new Runnable() {
+            @Override
+            public void run() {
+                highestCardGame.dealCard(player2);
+                player2CardText.setText(player2.getHand().get(0).getShortName());
+            }
+
+        };
+        setDelay.postDelayed(startDelay, 1000);
 
         startDelay = new Runnable() {
             @Override
@@ -101,7 +101,8 @@ public class PlayHighestCardActivity extends AppCompatActivity {
                 informationText.setText(highestCardGame.findWinner());
             }
         };
-        setDelay.postDelayed(startDelay, 2500);
+        setDelay.postDelayed(startDelay, 2000);
+
     }
 
     public void onPlayAgainButtonClicked(View view) {
@@ -113,8 +114,5 @@ public class PlayHighestCardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
-
-
-
 
 }
