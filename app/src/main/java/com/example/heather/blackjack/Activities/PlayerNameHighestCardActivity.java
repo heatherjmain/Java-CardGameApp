@@ -12,6 +12,9 @@ import com.example.heather.blackjack.R;
 public class PlayerNameHighestCardActivity extends AppCompatActivity {
     EditText playerNameEditText;
     Button playGameButton;
+    Button backToAllGames;
+    static String name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,10 @@ public class PlayerNameHighestCardActivity extends AppCompatActivity {
 
         playerNameEditText = (EditText) findViewById(R.id.enter_player_name);
         playGameButton = (Button) findViewById(R.id.play_game_button);
+        backToAllGames = (Button) findViewById(R.id.back_to_all_games_button);
+
+        playerNameEditText.setText(name);
+
     }
 
 
@@ -28,11 +35,20 @@ public class PlayerNameHighestCardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PlayHighestCardActivity.class);
 
         String playerName = playerNameEditText.getText().toString();
-        intent.putExtra( "playerName", playerName );
+        name = playerName;
+
+
+        intent.putExtra("playerName", playerName);
 
         startActivity(intent);
     }
+
+    public void onBackToAllGamesButtonClicked(View button) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
 }
+
 
 
 

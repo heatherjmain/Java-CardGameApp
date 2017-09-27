@@ -93,7 +93,7 @@ public class PlayHighestCardActivity extends AppCompatActivity {
             }
 
         };
-        setDelay.postDelayed(startDelay, 1000);
+        setDelay.postDelayed(startDelay, 500);
 
         startDelay = new Runnable() {
             @Override

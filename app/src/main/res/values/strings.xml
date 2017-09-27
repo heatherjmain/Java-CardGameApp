@@ -16,4 +16,5 @@
     <string name="dealer">Dealer</string>
     <string name="highest_card_button">Highest Card</string>
     <string name="play_game">Play Game</string>
+    <string name="back_to_all_games">Back To All Games</string>
 </resources>
