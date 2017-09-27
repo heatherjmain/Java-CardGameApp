@@ -173,7 +173,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card3.setText(player1.getHand().get(2).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
@@ -184,7 +184,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card4.setText(player1.getHand().get(3).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
@@ -195,11 +195,11 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player1Card5.setText(player1.getHand().get(4).getShortName());
                 if (player1.getScore() > 21) {
                     makeToast(player1.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player2.getName().toUpperCase() + ", WINS");
                     player1HitButton.setEnabled(false);
                     player1StickButton.setEnabled(false);
                 } else
-                    informationText.setText(player1.getName().toUpperCase() + " - STICK OR HIT???");
+                    informationText.setText("WOW - 5 CARD TRICK - PLEASE STICK");
 //                    makeToast(player1.getName().toUpperCase() + " - STICK OR HIT???", Toast.LENGTH_SHORT);
             }
         }
@@ -251,7 +251,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player2Card3.setText(player2.getHand().get(2).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + "  BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
                     player2HitButton.setEnabled(false);
                     player2StickButton.setEnabled(false);
                 } else
@@ -261,7 +261,7 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player2Card4.setText(player2.getHand().get(3).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
                     player2HitButton.setEnabled(false);
                     player2StickButton.setEnabled(false);
                 } else
@@ -271,11 +271,11 @@ public class PlayBlackJackActivity extends AppCompatActivity {
                 player2Card5.setText(player2.getHand().get(4).getShortName());
                 if (player2.getScore() > 21) {
                     makeToast(player2.getName().toUpperCase() + " BUST", Toast.LENGTH_SHORT);
-                    informationText.setText("BUST - TRY AGAIN");
+                    informationText.setText("BUST " + player1.getName().toUpperCase() + ", WINS");
                     player2HitButton.setEnabled(false);
                     player2StickButton.setEnabled(false);
                 } else
-                    informationText.setText(player2.getName().toUpperCase() + " - STICK OR HIT???");
+                    informationText.setText("WOW - 5 CARD TRICK - PLEASE STICK");
             }
         }
         //get the view that they will be addings card

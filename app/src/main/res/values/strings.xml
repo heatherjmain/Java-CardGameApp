@@ -11,4 +11,9 @@
     <string name="hit_button">hit</string>
     <string name="choose_another_game">Choose another game</string>
     <string name="play_blackjack_again">Play again</string>
+    <string name="enter_player_name">Enter Player Name</string>
+    <string name="deal_card">Deal Card</string>
+    <string name="dealer">Dealer</string>
+    <string name="highest_card_button">Highest Card</string>
+    <string name="play_game">Play Game</string>
 </resources>

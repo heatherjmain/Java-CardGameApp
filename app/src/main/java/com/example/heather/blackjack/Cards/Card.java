@@ -25,9 +25,9 @@ public class Card {
 
         if (value.ordinal() + 1 > 10)
             return 10;
-
-        if (value == Value.ACE)
-            return 11;
+//
+//        if (value == Value.ACE)
+//            return 11;
 
         return value.ordinal() + 1;
     }

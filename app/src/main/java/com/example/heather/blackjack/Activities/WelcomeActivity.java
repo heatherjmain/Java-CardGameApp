@@ -12,6 +12,7 @@ import com.example.heather.blackjack.R;
 public class WelcomeActivity extends AppCompatActivity {
 
     Button blackJackButton;
+    Button highestCardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +20,18 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         blackJackButton = (Button) findViewById(R.id.blackjack_button);
+        highestCardButton = (Button) findViewById(R.id.highest_card_button);
 
     }
 
 
     public void onBlackJackButtonClicked(View button) {
         Intent intent = new Intent(this, PlayerNamesBlackJackActivity.class);
+        startActivity(intent);
+    }
+
+    public void onHighestCardButtonClicked(View button) {
+        Intent intent = new Intent(this, PlayerNameHighestCardActivity.class);
         startActivity(intent);
     }
 

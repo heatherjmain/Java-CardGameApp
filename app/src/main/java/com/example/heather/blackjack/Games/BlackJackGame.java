@@ -52,7 +52,7 @@ public class BlackJackGame extends Game {
     public String declareWinnerWithBlackJack(Playable player) {
         if (hasBlackJack(player)) {
             BlackJackPlayer hasBlackjack = (BlackJackPlayer) player;
-            return hasBlackjack.getName().toUpperCase() + " HAS BLACKJACK AND WINS!";
+            return hasBlackjack.getName().toUpperCase() + " HAS BLACKJACK AND WINS";
         }
         return " ";
     }
@@ -73,7 +73,7 @@ public class BlackJackGame extends Game {
                 int challengerScore = player.getScore();
 
                 if ((challengerScore == winningScore) && (player != currentWinner)) {
-                    return "IT'S A DRAW! TRY AGAIN";
+                    return "IT'S A DRAW - TRY AGAIN";
 
                 } else if (challengerScore > winningScore && challengerScore <= 21) {
                     currentWinner = player;
@@ -82,7 +82,7 @@ public class BlackJackGame extends Game {
             }
 
         BlackJackPlayer winner = (BlackJackPlayer) currentWinner;
-        return winner.getName().toUpperCase() + " WINS!";
+        return winner.getName().toUpperCase() + " WINS";
 
     }
 

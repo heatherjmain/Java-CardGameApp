@@ -152,7 +152,7 @@ public class BlackJackGameTest {
         player2.receiveCard(card3);
         player2.receiveCard(card4);
 
-        assertEquals("SUE WINS!", blackJackGame.findWinner());
+        assertEquals("SUE WINS", blackJackGame.findWinner());
     }
 
     @Test
@@ -169,7 +169,7 @@ public class BlackJackGameTest {
         player2.receiveCard(card3);
         player2.receiveCard(card4);
 
-        assertEquals("SUE WINS!", blackJackGame.findWinner());
+        assertEquals("SUE WINS", blackJackGame.findWinner());
     }
 
     @Test
@@ -190,7 +190,7 @@ public class BlackJackGameTest {
         player2.receiveCard(card4);
         player2.receiveCard(card5);
 
-        assertEquals("SUE WINS!", blackJackGame.findWinner());
+        assertEquals("SUE WINS", blackJackGame.findWinner());
     }
 
     @Test
@@ -208,7 +208,7 @@ public class BlackJackGameTest {
         player2.receiveCard(card4);
         player2.receiveCard(card5);
 
-        assertEquals("IT'S A DRAW! TRY AGAIN", blackJackGame.findWinner());
+        assertEquals("IT'S A DRAW - TRY AGAIN", blackJackGame.findWinner());
     }
 
 }
