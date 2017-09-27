@@ -1,6 +1,7 @@
 package com.example.heather.blackjack.Players;
 
 import com.example.heather.blackjack.Cards.Card;
+import com.example.heather.blackjack.Cards.Value;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,9 @@ public class HighestCardPlayer implements Playable {
         int counter = 0;
 
         for ( Card card : hand ) {
+            if (card.getValue() == Value.ACE) {
+                counter += 11;
+            } else
             counter += card.cardValueForGame();
         }
         return counter;

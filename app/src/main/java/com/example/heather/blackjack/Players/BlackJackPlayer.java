@@ -44,10 +44,6 @@ public class BlackJackPlayer implements Playable {
 
         for ( Card card : hand ) {
 
-//            if (counter > 21 && (card.getValue() == Value.ACE)) {
-//                counter -= 10;
-//            }
-
             counter += card.cardValueForGame();
         }
         return counter;
