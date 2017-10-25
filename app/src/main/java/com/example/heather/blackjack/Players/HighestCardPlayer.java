@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 
 public class HighestCardPlayer implements Playable {
-    String name;
-    ArrayList<Card> hand;
+    private String name;
+    private ArrayList<Card> hand;
 
 
     public HighestCardPlayer(String name) {

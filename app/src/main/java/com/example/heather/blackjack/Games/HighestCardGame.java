@@ -36,6 +36,5 @@ public class HighestCardGame extends Game {
         }
         HighestCardPlayer winner = (HighestCardPlayer) currentWinner;
         return winner.getName().toUpperCase() + " WINS";
-
     }
 }
