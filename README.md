@@ -32,3 +32,5 @@ Improve the UI
 I implemented a card game app which allows a user to select between 2 card games; Blackjack or Highest card.
 The core game logic was developed via TDD in plain Java. 
 I then transferred this logic into an Android project with a full UI.
+
+![screenshot](https://github.com/heatherrae150/Java-CardGameApp/blob/master/Screen%20Shot%202017-10-25%20at%2000.59.19.png)
